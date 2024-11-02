@@ -429,3 +429,10 @@ body {
     cursor: pointer;
 }
 
+#soundcloud-player {
+    position: absolute;  /* Positioning to take it out of flow */
+    left: -9999px;       /* Move it off-screen */
+    width: 1px;         /* Minimal width */
+    height: 1px;        /* Minimal height */
+    overflow: hidden;    /* Hide any overflow */
+}
