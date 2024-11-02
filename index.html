@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise Animation</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="balloon" id="balloon">
+        <img src="assets/images/balloon1.png" alt="Balloon" class="balloon-image">
+    </div>
+    
+    <div class="message-container" id="messageContainer" style="display: none;">
+        <p class=".beating-emoji"></p>
+        <button class="btn-starting" id="clickButton" onclick="proceed()">CLICK ME</button>
+    </div>
+
+    <div id="birthdayContainer" style="display: none;">
+        <h1>Happy Birthday!</h1>
+        <img src="assets/images/cake.png" alt="Birthday Cake" style="max-width: 100%; height: auto;">
+        <button class="btn-starting" id="blowCandleButton" onclick="proceedNext()">CLICK ME</button>
+    </div>
+
+    <div id="blowCandleContainer" style="display: none;">
+        <h1>Blow the Candle!</h1>
+        <img src="assets/images/handle.png" alt="Blowing Candle">
+        <button class="btn-starting" id="wishButton" onclick="proceedNext2()">CLICK ME</button>
+    </div>
+
+    <div id="wishContainer" style="display: none;">
+        <h1>Your wishes will become true!</h1>
+        <img src="assets/images/wish.png" alt="Wishes Image">
+        <button class="btn-starting" id="speechButton" onclick="proceedNextSpeech()">CLICK ME</button>
+    </div>
+    
+    <audio autoplay loop>
+        <source src="assets/music/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <div id="speechContainer" style="display: none;">
+        <div id="heartImages" style="display: flex; justify-content: center; flex-wrap: wrap; max-width: 200px; margin: 0 auto;">
+            <img src="assets/images/img4.jpeg" alt="Heart Image" class="heart-image">
+            <img src="assets/images/img3.jpeg" alt="Heart Image" class="heart-image">
+            <img src="assets/images/img2.jpeg" alt="Heart Image" class="heart-image">
+            <img src="assets/images/img1.jpeg" alt="Heart Image" class="heart-image">
+        </div>
+        <div id="poemContainer" style="display: none;">
+            <h2>“In Every Moment”</h2>
+            <p>
+                A glance, a laugh, a spark that’s new,
+                Every day, I’m drawn to you.
+                In simple words, it’s clear to see—
+                You’re becoming everything to me.</p>
+        </div>
+        <div id="speechSubContainer" style="display: none;">
+            <h2>Happy Birthday, Collene! </h2>
+            <p>Today, I just want you to know how special you are. getting to know you has been such a bright part of my life, and I feel so lucky to have met someone like you. I hope today is filled with all the joy and love you deserve. may this year bring you closer to everything you’re wishing for, with so many new memories and happy moments. u’re amazing just as you are, and I hope this birthday is the start of your best year yet. :)))</p>
+        </div>
+
+        <button class="btn-starting" id="tulipButton" onclick="proceedNextTulip()">VIEW ME</button>
+    </div>
+    
+    <div id="flowerModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeFlowerModal()">&times;</span>
+            <h2>Here’s the flower for you!</h2>
+            <img src="assets/images/lastimage.png" alt="Flower" style="max-width: 100%; height: auto;">
+        </div>
+    </div>
+
+      <!-- Raining Balloons with Image Source -->
+    <img src="assets/images/balloon1.png" class="raining-balloon" alt="Balloon">
+    <img src="assets/images/balloon2.png" class="raining-balloon" alt="Balloon">
+    <img src="assets/images/balloon1.png" class="raining-balloon" alt="Balloon">
+    <img src="assets/images/balloon2.png" class="raining-balloon" alt="Balloon">
+    <img src="assets/images/balloon1.png" class="raining-balloon" alt="Balloon">
+    <img src="assets/images/balloon2.png" class="raining-balloon" alt="Balloon">
+    <img src="assets/images/balloon1.png" class="raining-balloon" alt="Balloon">
+    <img src="assets/images/balloon2.png" class="raining-balloon" alt="Balloon">
+    <img src="assets/images/balloon1.png" class="raining-balloon" alt="Balloon">
+
+
+    <script src="assets/js/animation.js"></script>
+</body>
+</html>

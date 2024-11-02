@@ -1,0 +1,431 @@
+/* General Styles */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Align items at the bottom */
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Light blue background */
+}
+
+/* Balloon Styles */
+.balloon {
+    position: absolute;
+    bottom: 0; /* Start from the bottom */
+    animation: float 5s ease-in-out forwards; /* Animate the balloon */
+}
+
+.balloon-image {
+    width: 120px; /* Set the width for balloon image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Keyframe Animations */
+@keyframes float {
+    0% {
+        transform: translateY(0); /* Start position */
+    }
+    100% {
+        transform: translateY(-40vh); /* End position at a higher point above the bottom */
+    }
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(0); /* Start scaled down */
+        opacity: 0; /* Start invisible */
+    }
+    50% {
+        opacity: 1; /* Midway become visible */
+    }
+    100% {
+        transform: scale(1); /* End at normal scale */
+    }
+}
+
+/* Message Container */
+.message-container {
+    display: none; /* Initially hidden */
+    position: absolute;
+    bottom: calc(40vh + 10px); /* Position it just below the balloon */
+    right: 10%; /* Position to the right for larger screens */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-size: 25px; /* Smaller font size */
+    animation: popup 0.5s ease forwards; /* Popup animation */
+}
+
+.btn-starting {
+    position: relative; /* Positioning for the pseudo-element */
+    background-color: #B1D690;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px; /* Optional: for rounded corners */
+    overflow: hidden; /* Ensure the line is contained within the button */
+}
+
+.btn-starting::after {
+    content: ''; /* Creates the line */
+    position: absolute;
+    width: 100%; /* Full width */
+    height: 2px; /* Line thickness */
+    background: #4CC9FE; /* Line color */
+    left: 50%; /* Start from the center */
+    bottom: 0; /* Position at the bottom */
+    transform: translateX(-50%) scaleX(0); /* Center it and scale it down to 0 */
+    transition: transform 0.4s ease; /* Animation for scaling */
+}
+
+.btn-starting:hover::after {
+    transform: translateX(-50%) scaleX(1); /* Scale to full width on hover */
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .balloon {
+        margin-top: 100px; /* Adjusted margin-top for mobile */
+    }
+
+    .message-container {
+        right: 0; /* Remove right positioning for mobile */
+        bottom: calc(40vh + 10px); /* Position it just below the balloon */
+        left: 0; /* Allow it to stretch full width */
+        margin: 0 auto; /* Center it */
+        width: 90%; /* Give it a width for better visibility */
+    }
+}
+
+@media (max-width: 480px) {
+    .balloon {
+        margin-top: 300px; /* Adjusted margin-top for smaller screens */
+    }
+
+    .message-container {
+        bottom: calc(40vh + 10px); /* Position it just below the balloon */
+        width: 90%; /* Maintain a good width */
+        padding: 5px; /* Maintain padding for small screens */
+        font-size: 25px; /* Adjust font size for smaller screens */
+
+    }
+}
+
+.beating-emoji {
+    display: inline-block; /* Allow the animation to apply properly */
+    animation: beat 1s infinite; /* Animation name and duration */
+}
+
+@keyframes beat {
+    0%, 100% {
+        transform: scale(1); /* Normal size */
+    }
+    50% {
+        transform: scale(1.2); /* Scale up */
+    }
+}
+
+/* Balloon Rain Styling */
+.raining-balloon {
+    position: absolute;
+    top: -100px; /* Start above the viewport */
+    opacity: 0.8;
+    width: 60px; /* Set the size of each balloon */
+    pointer-events: none; /* Make balloons unclickable */
+}
+
+/* Shower animation with randomized direction */
+@keyframes shower {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(calc(var(--direction) * 50px)) rotate(calc(var(--rotation) * 360deg));
+        opacity: 0;
+    }
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;       /* Start with opacity 0 */
+        transform: translateY(20px); /* Start slightly lower */
+    }
+    to {
+        opacity: 1;       /* End with opacity 1 */
+        transform: translateY(0); /* End at normal position */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;              /* Start with opacity 0 */
+        transform: translateY(20px); /* Start slightly lower */
+    }
+    to {
+        opacity: 1;              /* End with opacity 1 */
+        transform: translateY(0); /* End at normal position */
+    }
+}
+
+@keyframes popUp {
+    from {
+        opacity: 0;              /* Start with opacity 0 */
+        transform: scale(0.5);   /* Start at half size */
+    }
+    to {
+        opacity: 1;              /* End with opacity 1 */
+        transform: scale(1);     /* End at normal size */
+    }
+}
+
+#birthdayContainer {
+    display: flex;               /* Enable flexbox layout */
+    flex-direction: column;     /* Arrange items in a column */
+    justify-content: flex-end;  /* Align items to the bottom */
+    align-items: center;        /* Center items horizontally */
+    height: 100vh;              /* Make the container full height of the viewport */
+    padding: 20px;
+    box-sizing: border-box;     /* Include padding in height calculation */
+    text-align: center;         /* Center the text */
+    animation: fadeIn 1s ease;  /* Apply the fade-in animation to the container */
+}
+
+#birthdayContainer h1 {
+    font-size: 36px; /* Adjust font size for the birthday message */
+    color: #333; /* Change the color as needed */
+}
+
+#birthdayContainer img {
+    margin-top: 20px; /* Add space above the image */
+    max-width: 100%; /* Make sure the image is responsive */
+    height: auto; /* Maintain the aspect ratio */
+    animation: popUp 0.6s ease forwards; /* Apply pop-up animation to the image */
+    opacity: 0; /* Start with opacity 0 for animation */
+}
+
+/* To trigger the image animation when the container is shown */
+#birthdayContainer img.visible {
+    opacity: 1; /* Fade in the image */
+}
+
+
+#blowCandleContainer {
+    display: flex;               /* Enable flexbox layout */
+    flex-direction: column;     /* Arrange items in a column */
+    justify-content: flex-end;  /* Align items to the bottom */
+    align-items: center;        /* Center items horizontally */
+    height: 100vh;              /* Make the container full height of the viewport */
+    padding: 20px;
+    box-sizing: border-box;     /* Include padding in height calculation */
+    text-align: center;         /* Center the text */
+    animation: fadeIn 1s ease;  /* Apply the fade-in animation */
+}
+
+#blowCandleContainer img {
+    margin-top: 20px; /* Add space above the image */
+    max-width: 100%; /* Make sure the image is responsive */
+    height: auto; /* Maintain the aspect ratio */
+    animation: popUp 0.6s ease forwards; /* Apply pop-up animation to the image */
+    opacity: 0; /* Start with opacity 0 for animation */
+}
+
+/* Trigger the image animation when the container is shown */
+#blowCandleContainer img.visible {
+    opacity: 1; /* Fade in the image */
+}
+
+
+#wishContainer {
+    display: flex;               /* Enable flexbox layout */
+    flex-direction: column;     /* Arrange items in a column */
+    justify-content: flex-end;  /* Align items to the bottom */
+    align-items: center;        /* Center items horizontally */
+    height: 100vh;              /* Make the container full height of the viewport */
+    padding: 20px;
+    box-sizing: border-box;     /* Include padding in height calculation */
+    text-align: center;         /* Center the text */
+    animation: fadeIn 1s ease;  /* Apply the fade-in animation */
+}
+
+#wishContainer img {
+    margin-top: 20px; /* Add space above the image */
+    max-width: 100%; /* Make sure the image is responsive */
+    height: auto; /* Maintain the aspect ratio */
+    animation: popUp 0.6s ease forwards; /* Apply pop-up animation to the image */
+    opacity: 0; /* Start with opacity 0 for animation */
+}
+
+/* Trigger the image animation when the container is shown */
+#wishContainer img.visible {
+    opacity: 1; /* Fade in the image */
+}
+
+.heart-image {
+    width: 50px; /* Adjust the size of the heart images */
+    margin: 5px; /* Space between images */
+    opacity: 0; /* Start with opacity 0 for animation */
+    animation: fadeIn 1s ease forwards; /* Apply fade-in animation */
+}
+
+/* Additional animation for images to create a pop-up effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+#speechContainer {
+    display: flex;                /* Enable flexbox layout */
+    flex-direction: column;       /* Arrange items in a column */
+    align-items: center;          /* Center items horizontally */
+    position: absolute;           /* Use absolute positioning */
+    bottom: 0;                    /* Stick to the bottom of the viewport */
+    left: 50%;                    /* Center horizontally */
+    transform: translateX(-50%);  /* Adjust for the width of the container */
+    width: 100%;                  /* Full width to allow content centering */
+    padding: 20px;                /* Padding for spacing */
+    box-sizing: border-box;       /* Include padding in width calculation */
+    text-align: center;           /* Center the text */
+    animation: fadeIn 1s ease;   /* Apply the fade-in animation */
+    margin-top: -100px;
+}
+
+#poemContainer, #speechSubContainer {
+    background-color: rgba(255, 255, 255, 0.8); /* Light background with slight transparency */
+    border: 2px solid #ff6f61; /* Border color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Space inside the box */
+    margin: 10px auto; /* Center the boxes horizontally and space between them */
+    max-width: 600px; /* Maximum width for the boxes */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    text-align: center; /* Center the text inside */
+}
+
+/* Optional: Style headers within the containers */
+#poemContainer h2, #speechSubContainer h2 {
+    color: #ff6f61; /* Header color */
+    margin-bottom: 10px; /* Space below the header */
+}
+
+#poemContainer p, #speechSubContainer p {
+    color: #333; /* Text color */
+    line-height: 1.5; /* Improve readability */
+}
+
+
+.heart-image {
+    width: 150px;                  /* Adjust the size of the heart images */
+    height: 100px;
+    margin: 5px;                  /* Space between images */
+    opacity: 0;                   /* Start with opacity 0 for animation */
+    animation: fadeIn 1s ease forwards; /* Apply fade-in animation */
+}
+
+/* Ensure the poem and speech containers are also centered */
+#poemContainer, #speechSubContainer {
+    margin-top: 20px;             /* Space above the containers */
+    opacity: 0;                   /* Start with opacity 0 for animation */
+    animation: fadeIn 1s ease forwards; /* Apply fade-in animation */
+}
+
+/* Additional animation for fading in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+#heartImages {
+    position: relative; /* Needed to contain absolutely positioned elements */
+    width: 200px; /* Set the width for the container */
+    height: 200px; /* Set a height for the container */
+    display: flex; /* Use flexbox to arrange images horizontally */
+    justify-content: center; /* Center images horizontally */
+    align-items: flex-end; /* Align items at the bottom */
+    margin-top: 400px;
+}
+
+.heart-image {
+    width: 50px; /* Adjust the size of the heart images */
+    margin: 5px; /* Space between images */
+    opacity: 1; /* Fully visible */
+}
+
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+.raining-heart {
+    position: absolute; /* Position relative to the nearest positioned ancestor */
+    width: 60px; /* Adjust size of heart images */
+    height: auto; /* Maintain aspect ratio */
+    animation: fall linear forwards; /* Apply falling animation */
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
