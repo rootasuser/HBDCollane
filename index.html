@@ -35,10 +35,6 @@
         <button class="btn-starting" id="speechButton" onclick="proceedNextSpeech()">CLICK ME</button>
     </div>
     
-    <audio autoplay loop>
-        <source src="assets/music/bg-music-con.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-    </audio>
 
     <div id="speechContainer" style="display: none;">
         <div id="heartImages" style="display: flex; justify-content: center; flex-wrap: wrap; max-width: 200px; margin: 0 auto;">
@@ -83,6 +79,15 @@
     <img src="assets/images/balloon1.png" class="raining-balloon" alt="Balloon">
 
 
+<!-- Hidden audio element -->
+<audio id="backgroundAudio" loop>
+    <source src="https://cdn.jsdelivr.net/gh/rootasuser/audio@main/bg-music-con.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+ 
     <script src="assets/js/animation.js"></script>
+   
 </body>
 </html>

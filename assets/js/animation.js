@@ -73,6 +73,10 @@ function createBalloon() {
 }
 
 function proceed() {
+
+    const audio = document.getElementById('backgroundAudio');
+    audio.play(); // Start playing the audio
+
     // Hide the previous container (assuming it's called #messageContainer)
     document.getElementById('messageContainer').style.display = 'none';
 
